@@ -1,0 +1,19 @@
+<nav>
+	<div class="links">
+		<div class="links left">
+			<a href=" {{ path('app_actualites') }}">Actualités</a>
+			<a href="  {{ path('app_gallery') }} ">Galerie</a>
+			<a href=" {{ path('app_card') }}">Carte</a>
+		</div>
+		<div class="logo">
+			<a href="/">
+				<img src="{{ asset('images/GRINGO_LOCO_LOGO_2023.png') }}" alt="logo gringo loco"></a>
+		</div>
+		<div class="links right">
+			<a href="{{ path('app_find_us') }}">Nous&nbsptrouver</a>
+			<a href="#">Boutique</a>
+			<a href="{{ path('app_reservation') }}">Réserver</a>
+			<a href="{{ path('app_profil') }}" class="links__profil--button">{{ render(controller('App\\Controller\\ProfilController::infoHeader')) }}</a>
+		</div>
+
+	</nav>

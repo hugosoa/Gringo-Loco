@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="single__article">
+		<div class="article">
+			<a href="{{ path('app_actualites')}}"><img src="{{ asset('images/article/back-arrow.svg')}}" alt="flèche de retour en arrière" class="arrow--back"></a>
+			<h1>{{ article.title }}</h1>
+			<img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="Image de l'article">
+			<p>{{ article.content}}
+			</p>
+			<span>
+				<b>par
+					<span class="underline">{{ article.author }}</span>
+				</b>
+			</span>
+			<div class="date">
+				<span>
+					<i>Crée le
+
+						{{ article.createdAt|date("d/m/Y") }}</i>
+				</span>
+				{# {% if article.updatedAt is not empty and (article.updatedAt == article.createdAt)%}
+																																																																														<span>&nbsp / &nbsp
+																																																																															<i>Modifié le
+																																																																									
+																																																																																{{ article.updatedAt|date('d/m/Y')}}
+																																																																															</span>
+																																																																														</i>
+																																																																													{% endif %} #}
+			</div>
+		</div>
+	</div>
+{% endblock %}

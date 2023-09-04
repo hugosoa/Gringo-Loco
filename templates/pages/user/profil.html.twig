@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div class="profil__container">
+		{% for message in app.flashes('success') %}
+			<div class="alert alert__success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<div class="profil__container--infos">
+			<div class="profil__picture">
+				{% if(user.imageName) %}
+					<img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="photo de profil">
+
+				{% else %}
+					<img src="{{ asset('images/profil__picture.png') }}">
+				{% endif %}
+				<div class="profil__container--logout">
+					<a href="{{ path('app_logout')}}">Déconnexion</a>
+				</div>
+			</div>
+			<div>
+				<table>
+					<caption>
+						Vos informations personnelles
+					</caption>
+					<tbody>
+						<tr>
+							<th scope="row">PRÉNOM</th>
+							<td>{{ user.firstName }}</td>
+						</tr>
+						<tr>
+							<th scope="row">NOM</th>
+							<td>{{ user.lastName }}</td>
+						</tr>
+
+						<tr>
+							<th scope="row">PSEUDO
+							</th>
+							<td>{{ user.pseudo }}</td>
+						</tr>
+						<tr>
+							<th scope="row">EMAIL
+							</th>
+							<td>{{ user.email }}</td>
+						</tr>
+						<tr>
+							<th scope="row">DATE D'INSCRIPTION
+							</th>
+							<td>{{ user.createdAt|date('d/m/Y')}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="profil__container--button">
+				<a href="{{ path('app_edit') }}">
+					<button class="profil__submit">Modifier le profil</button>
+				</a>
+				<a href="{{ path('app_edit_password') }}">
+					<button class="profil__submit">Modifier mon mot de passe</button>
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

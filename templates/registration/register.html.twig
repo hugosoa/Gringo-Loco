@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+{% block body %}
+
+	<div class="form">
+		<h1>
+			Création du compte</h1>
+		<div class="form__groups">
+			{{ form_start(form) }}
+			<div class="form__group">
+				{{ form_label(form.email)}}
+				{{ form_widget(form.email)}}
+				<div class="form__error">
+					{{ form_errors(form.email)}}
+				</div>
+			</div>
+			<div class="form__group">
+				{{ form_label(form.firstName)}}
+				{{ form_widget(form.firstName)}}
+				<div class="form__error">
+					{{ form_errors(form.firstName)}}
+				</div>
+			</div>
+			<div class="form__group">
+				{{ form_label(form.lastName)}}
+				{{ form_widget(form.lastName)}}
+				<div class="form__error">
+					{{ form_errors(form.lastName)}}
+				</div>
+			</div>
+			<div class="form__group">
+				{{ form_label(form.pseudo)}}
+				{{ form_widget(form.pseudo)}}
+				<div class="form__error">
+					{{ form_errors(form.pseudo)}}
+				</div>
+			</div>
+			<div
+				class="form__group">
+				{# {{ form_label(form.imageFile)}} #}
+				{{ form_row(form.imageFile)}}
+				<div class="form__error">
+					{{ form_errors(form.imageFile)}}
+				</div>
+			</div>
+			<div class="form__group">
+				{{ form_label(form.plainPassword)}}
+				{{ form_widget(form.plainPassword)}}
+				<div class="form__error">
+					{{ form_errors(form.plainPassword)}}
+				</div>
+			</div>
+			<div class="form__group">
+				{{ form_label(form.confirmPassword)}}
+				{{ form_widget(form.confirmPassword)}}
+				<div class="form__error">
+					{{ form_errors(form.confirmPassword)}}
+				</div>
+			</div>
+			<div class="form__group--btn">
+				{{ form_row(form.submit)}}
+				<a href="{{ path('app_login') }}">
+					<p>Déjà un compte chez nous ?</p>
+				</a>
+			</div>
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endblock %}

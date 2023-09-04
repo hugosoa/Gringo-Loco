@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+{% block body %}
+	<form method="post">
+
+		<div class="form">
+			<h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+			{% for message in app.flashes('success') %}
+				<div class="alert alert__success">
+					{{ message }}
+				</div>
+			{% endfor %}
+			{% if app.user %}
+				<div class="mb-3">
+					Vous êtes connecté avec
+					{{ app.user.userIdentifier }},
+					<a href="{{ path('app_logout') }}" class="form--logout">se déconnecté</a>
+				</div>
+			{% endif %}
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+			<div class="form__groups">
+				<div class="form__group">
+					<label for="username" class="form__label">Email</label>
+					<input type="email" value="{{ last_username }}" name="_username" id="username" class="form__control" autocomplete="email" required autofocus>
+				</div>
+				<div class="form__group">
+					<label for="password" class="form__label">Password</label>
+					<input type="password" name=" _password" id=" password" class=" form__control" autocomplete=" current-password" required>
+				</div>
+
+				<input
+				type="hidden" name="_csrf_token" value=" {{ csrf_token('authenticate') }} ">
+
+				{#
+																																																				Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+																																																				See https://symfony.com/doc/current/security/remember_me.html
+																																																				
+																																																				<div class="checkbox mb-3">
+																																																					<label>
+																																																						<input type="checkbox" name="_remember_me"> Remember me
+																																																					</label>
+																																																				</div>
+																																																				#}
+				<div class="form__group--btn">
+					<button class="form__submit" type="submit">
+						Se connecter
+					</button>
+					<a href="{{ path('app_register') }}">
+						<p>Pas encore de compte chez nous ?</p>
+					</a>
+				</div>
+			</div>
+		</form>
+	</div>
+{% endblock %}

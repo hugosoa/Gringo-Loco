@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<div class="gallery">
+		{% for message in app.flashes('success') %}
+			<div class="alert alert__success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		{% for message in app.flashes('delete') %}
+			<div class="alert alert__delete">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<div class="gallery__container">
+			{% for gallery in galleries %}
+				<div class="gallery__container--images">
+					<img src="{{ vich_uploader_asset(gallery, 'imageFile') }}" alt="galerie d'images">
+					{% if(app.user) %}
+						{% if(app.user.pseudo == gallery.author or app.user.firstName == gallery.author) %}
+							<div class="gallery__container--delete">
+								<a class="gallery__btn gallery__btn--delete" href="{{ path('gallery_delete', { id: gallery.id }) }}">
+									<img src="{{ asset('images/gallery/gallery-delete.svg')}}" alt="supprimé image"></a>
+							</div>
+						{% endif %}
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	{% if(app.user) %}
+		<a href="{{ path('app_add_gallery')}}" class="form__add">
+			+
+		</a>
+	{% endif %}
+{% endblock %}

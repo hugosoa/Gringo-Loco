@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block email %}
+	Gringo Loco - Reservation
+{% endblock %}
+
+{% block body %}
+	<div class="form">
+		<h1>
+			Réservation</h1>
+		{% for message in app.flashes('success') %}
+			<div class="alert alert__success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<div class="form__groups">
+			{{ form_start(form) }}
+			<div class="form__group">
+				{{ form_label(form.email)}}
+				{{ form_widget(form.email)}}
+				<div class="form__error">
+					{{ form_errors(form.email)}}
+				</div>
+			</div>
+			<div class="form__group">
+				{{ form_label(form.fullName)}}
+				{{ form_widget(form.fullName)}}
+				<div class="form__error">
+					{{ form_errors(form.fullName)}}
+				</div>
+			</div>
+			<div class="form__group">
+				{{ form_label(form.content)}}
+				{{ form_widget(form.content)}}
+				<div class="form__error">
+					{{ form_errors(form.content)}}
+				</div>
+			</div>
+			<div class="form__group--btn">
+				{{ form_widget(form.submit)}}
+			</div>
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endblock %}

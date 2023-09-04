@@ -1,0 +1,47 @@
+{% extends "./base.html.twig" %}
+
+{% block body %}
+	<div class="form">
+		<h1>
+			Création d'un article</h1>
+		<div class="form__groups">
+			{{ form_start(form) }}
+			<div class="form__group">
+				{{ form_label(form.title)}}
+				{{ form_widget(form.title)}}
+				<div class="form__error">
+					{{ form_errors(form.title)}}
+				</div>
+			</div>
+			<div class="form__group">
+				{{ form_label(form.content)}}
+				{{ form_widget(form.content)}}
+				<div class="form__error">
+					{{ form_errors(form.content)}}
+				</div>
+			</div>
+			{# <div class="form__group">
+																															{{ form_label(form.article_picture)}}
+																															{{ form_widget(form.article_picture)}}
+																															<div class="form__error">
+																																{{ form_errors(form.article_picture)}}
+																															</div>
+																														</div> #}
+			<div
+				class="form__group">
+				{# {{ form_label(form.imageFile)}} #}
+				{{ form_row(form.imageFile)}}
+				<div class="form__error">
+					{{ form_errors(form.imageFile)}}
+				</div>
+			</div>
+			<div class="form__group--btn">
+				<a href=" {{ path('app_actualites')}}">Annuler</a>
+				{{ form_row(form.submit)}}
+			</div>
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

@@ -1,0 +1,12 @@
+<div class="profil__picture--header">
+	{% if(user) %}
+		{% if(user.imageName is not empty) %}
+			<img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="photo de profil">
+		{% else %}
+			<img src="{{ asset('images/profil__picture.png') }}">
+		{% endif %}
+	{% else %}
+		<img src="{{ asset('images/profil__picture.png') }}">
+
+	</div>
+{% endif %}

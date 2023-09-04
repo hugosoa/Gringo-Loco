@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Gringo Loco
+			{% endblock %}
+		</title>
+		<link rel="icon" href="{{ asset('images/glicon.png') }} ">
+		{% block stylesheets %}<link rel="stylesheet" type="text/css" href="{{ asset('css/mystyle32.css') }} ">
+		{% endblock %}
+		{% block script %}
+			<script src="{{ asset('js/nav.js') }}" defer></script>
+			<script src="{{ asset('js/loader.js') }}" defer></script>
+			<script src="{{ asset('js/parallax.js') }}" defer></script>
+			<script src="{{ asset('js/sound.js') }}" defer></script>
+			<script src="{{ asset('js/cardShowImage.js') }}" defer></script>
+			{#<script src="{{ asset('js/cursor.js') }}" defer></script>#}
+		{% endblock %}
 
-        {% block javascripts %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+	</head>
+	<body>
+		{% block loader %}
+			<div class="loader">
+				<img src="{{ asset('images/loader/shaker-loader.png')}}" alt="shaker loader">
+			</div>
+		{% endblock %}
+		{% block header %}
+			{% include "partials/_header.html.twig" %}
+		{% endblock %}
+		{% block cursor %}
+			{% include "partials/_cursor.html.twig" %}
+		{% endblock %}
+		{% block body %}{% endblock %}
+
+	</body>
 </html>

@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+	<div class="background__img__home">
+		{% for message in app.flashes('success') %}
+			<div class="alert alert__success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<div class="vignette"></div>
+		{# <img src="{{ asset('images/Arrière-plan.png') }}" data-speedx="0.5" data-speedy="0.6" data-speedz"=0" class="parallax bg-img" alt=""> #}
+		<img src="{{ asset('images/Arrière-plan.png') }}" data-speedx="0.5" data-speedy="0.6" data-speedz="0" class="parallax bg-img" alt="">
+	</div>
+	<div class="audio__container">
+		<audio id="myAudio">
+			<source src="{{ asset('sound/tokyoReggie.mp3') }}" type="audio/mpeg">
+			Votre navigateur ne prend pas en charge l'élément audio.
+		</audio>
+		<div class="audio__container--player">
+			<span class="line l1"></span>
+			<span class="line l2"></span>
+			<span class="line l3"></span>
+			<span class="line l4"></span>
+		</div>
+	</div>
+
+	<div class="footer">
+		&copyTous droits réservés
+	</div>
+
+{% endblock %}
