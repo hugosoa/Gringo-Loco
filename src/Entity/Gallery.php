@@ -56,6 +56,9 @@ class Gallery
     #[ORM\Column]
     private ?string $imageName = null;
 
+    #[ORM\Column]
+    private ?int $author_id = null;
+
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
@@ -120,6 +123,18 @@ class Gallery
     public function setDeletedAt(?\DateTimeImmutable $deletedAt): static
     {
         $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    public function getAuthorId(): ?int
+    {
+        return $this->author_id;
+    }
+
+    public function setAuthorId(int $author_id): static
+    {
+        $this->author_id = $author_id;
 
         return $this;
     }

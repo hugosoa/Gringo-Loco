@@ -25,6 +25,7 @@ class GalleryController extends AbstractController
     #[Route('/galerie/ajouter', name: 'app_add_gallery')]
     public function addGalerie(Request $request, EntityManagerInterface $manager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $gallery = new Gallery();
         $form = $this->createForm(GalleryFormType::class, $gallery);
 
@@ -35,6 +36,7 @@ class GalleryController extends AbstractController
             } else {
                 $gallery->setAuthor($this->getUser()->getFirstName());
             }
+            $gallery->setAuthorId($this->getUser()->getId());
             $manager->persist($gallery);
             $manager->flush();
             $this->addFlash(
@@ -48,10 +50,13 @@ class GalleryController extends AbstractController
         ]);
     }
 
-    #[Route('/galerie/suppression/ {id}', name: 'gallery_delete', methods: ['GET'])]
+    #[Route('/galerie/suppression/{id}', name: 'gallery_delete', methods: ['GET'])]
     public function delete(EntityManagerInterface $manager, Gallery $picture): Response
     {
-
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        if ($this->getUser()->getId() != $picture->getAuthorId()) {
+            return $this->redirectToRoute("app_login");
+        }
         $manager->remove($picture);
         $manager->flush();
 

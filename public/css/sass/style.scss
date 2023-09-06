@@ -36,10 +36,107 @@ nav {
     background: #eee9e10a;
     backdrop-filter: blur(8.2px);
     -webkit-backdrop-filter: blur(8.2px);
+    @media screen and (max-width: 600px) {
+        transform: translateX(-100%);
+        flex-direction: column;
+        display: block;
+        left: 0%;
+        height: 100vh;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+}
+nav.active {
+    transform: translateX(0%);
+}
+@media screen and (max-width: 600px){
+    .nav--open {
+        height: 2.5rem;
+        width: 2.5rem;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: transparent;
+        position: fixed;
+        top: 5%;
+        left: 7%;
+        z-index: 50;
+        transform: translate(-50%, -50%);
+
+    .line {
+        position: absolute;
+        display: block;
+        width: 80%;
+        height: .3rem;
+        background-color: $main-color;
+        border-radius: 10px;
+    }
+    .l1 {
+        top: 0%;
+    }
+    .l2 {
+        top: 25%;
+    }
+    .l3 {
+        top: 50%;
+    }
+}
+.nav--open.active {
+    .l1 {
+        top: 0%;
+        width: 30%;
+        border-radius: 10px 10px 0 0;
+        animation: navl1 0.3s forwards
+    }
+    @keyframes navl1 {
+        0% {
+            transform: translateY(0px);
+            width: 80%;
+            border-radius: 0px 0px 0px 0px;
+        }
+        100% {
+            transform: translateY(2px);
+            width: 30%;
+            border-radius: 10px 10px 0 0;
+        }
+    }
+    .l2 {
+        
+        width: 35%;
+        border-radius: 0px 0px 0 0;
+        animation: navl2 .3s forwards
+    }
+    @keyframes navl2 {
+        0% {
+            width: 80%;
+        }
+        100% {
+            width: 35%;
+        }
+    }
+    .l3 {
+        animation: navl3 .5s forwards
+    }
+    @keyframes navl3 {
+        0% {
+            border-radius: 0px 0px 0px 0px;
+            transform: translateY(0px);
+        }
+        100% {
+            transform: translateY(-2px);
+            border-radius: 0px 0px 10px 10px;
+        }
+    }
+}
 }
 
-nav.fade--in {
-    animation: fade-in .5s cubic-bezier(.26,.66,.37,.96) forwards
+@media screen and (min-width: 600px) {
+
+    nav.fade--in {
+        animation: fade-in .5s cubic-bezier(.26,.66,.37,.96) forwards
     
 }
 nav.fade--out {
@@ -48,19 +145,20 @@ nav.fade--out {
 
 @keyframes fade-out {
     0% {
-        transform: translate(0px, 0px)
+        transform: translateY(0px)
     }
     100% {
-        transform: translate(0px, -300px);
+        transform: translateY(-300px);
     }
 }
 @keyframes fade-in {
     0% {
-        transform: translate(0px, -300px);
+        transform: translateY(-300px);
     }
     100% {
-        transform: translate(0px, 0px)
+        transform: translateY(0px)
     }
+}
 }
 button {
     cursor: pointer;
@@ -69,6 +167,10 @@ button {
 input {
     color: $font-color;
     font-size: 1.3rem;
+    @media screen and (max-width: 600px) {
+        font-size: 2.3rem;
+        height: 4rem;
+    }
 }
 input::placeholder {
     font-style: italic;
@@ -76,10 +178,18 @@ input::placeholder {
 input[type="password"] {
     color: $second-color;
     font-size: 2rem;
+    @media screen and (max-width: 600px) {
+        font-size: 3rem;
+    }
 }
 textarea {
     color: $font-color;
     font-size: 1.3rem;
+    height: 10rem;
+    @media screen and (max-width: 600px) {
+        font-size: 2.3rem;
+        height: 15rem;
+    }
 }
 
 
@@ -90,6 +200,9 @@ textarea {
     z-index: 1;
     img {
         width: 10rem;
+        @media screen and (max-width: 600px) {
+            display: none;
+        }
     }
 }
 
@@ -100,11 +213,19 @@ textarea {
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+        height: 100%;
+    }
     .left, .right{
         display: flex;
         justify-content: space-around;
         flex-direction: row;
         width: 100%;
+        @media screen and (max-width: 600px) {
+            flex-direction: column;
+            height: 50%;
+        }
     }
     .right {
        a:nth-child(2) {
@@ -122,8 +243,12 @@ nav a {
     font-size: 2rem;
     &:hover{
         text-decoration: underline dashed $second-color;
-        animation: underline 1000ms
+        animation: underline 1000ms;
     }
+    @media screen and (max-width: 600px) {
+        font-size: 2.5rem;
+    }
+
 }
 
 @keyframes underline {
@@ -159,6 +284,10 @@ nav a {
         width: 150%;
         top: 50%;
         left: 50%;
+        transform: translate(-50%, -50%);
+        @media screen and (max-width: 600px) {
+            height: 150%;
+        }
     }
     .branchegauche {
         position: absolute;
@@ -232,6 +361,9 @@ h1 {
     font-family: 'Baloo 2';
     color: $font-color;
     position: relative;
+    @media screen and (max-width: 600px) {
+        font-size: 1rem;
+    }
     p a:nth-child(1){
         font-family: 'Tropika Island Int Interlock';
         text-decoration: none;
@@ -320,6 +452,9 @@ h1 {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    @media screen and (max-width: 600px) {
+        font-size: 2rem;
+    }
     &--logout {
         text-decoration: none;
         border-bottom: solid 1px $delete-color;
@@ -338,11 +473,17 @@ h1 {
         border-radius: 10px;
         &--edit {
             background-color: $edit-color;
+            @media screen and (max-width: 600px) {
+                font-size: 2rem;
+            }
             
         }
         &--delete {
             background-color: $delete-color;
             margin-left: 0.5rem;
+            @media screen and (max-width: 600px) {
+                font-size: 2rem;
+            }
         }
     }
     &__add {
@@ -353,10 +494,16 @@ h1 {
         font-size: 5rem;
         color: $main-color;
         font-family: 'Tropika Island Int Interlock';
+        @media screen and (max-width: 600px) {
+            font-size: 7rem;
+        }
     }
     &__groups {
         width: 40rem;
-        font-family: 'Baloo 2'
+        font-family: 'Baloo 2';
+        @media screen and (max-width: 600px) {
+            width: 80%;
+        }
     }
     &__group {
         display: flex;
@@ -376,11 +523,17 @@ h1 {
                 color: $main-color;
                 font-family: 'Baloo 2';
                 font-size: 1rem;
+                @media screen and (max-width: 600px) {
+                    font-size: 2rem;
+                }
             }
         }
     }
     &__label {
         font-size: 1.5rem;
+        @media screen and (max-width: 600px) {
+            font-size: 3rem;
+        }
     }
     &__control {
         background-color: lighten($background-color, 4) ;
@@ -395,7 +548,6 @@ h1 {
         border: solid 1px darken($background-color, 2);
         overflow:visible;
         resize: none;
-        height: 10rem;
     }
     &__img {
         background-color: lighten($background-color, 4) ;
@@ -403,6 +555,9 @@ h1 {
         padding: 0.5rem;
         border: solid 1px darken($background-color, 2);
         font-size: 1rem;
+        @media screen and (max-width: 600px) {
+            font-size: 2rem;
+        }
     }
     &__submit {
         font-family: $tropika-font;
@@ -413,6 +568,9 @@ h1 {
         color: $second-color;
         background-color: $background-color;
         font-size: 1.1rem;
+        @media screen and (max-width: 600px) {
+            font-size: 2.5rem;
+        }
         color: $second-color;
         &:hover {
             color: #6DAFE1;
@@ -422,10 +580,17 @@ h1 {
 }
 .gallery {
     margin: 200px 15% 0 15%;
+    @media screen and (max-width: 600px) {
+        margin: 200px 5% 0 5%;
+    }
     &__container {
         display: grid;
         grid-gap: 30px;
         grid-template-columns: repeat(4, minmax(120px, 1fr));
+        @media screen and (max-width: 600px) {
+            grid-template-columns: repeat(3);
+            grid-gap: 15px;
+        }
         &--delete {
             position: absolute;
             bottom: 5%;
@@ -486,6 +651,10 @@ h1 {
         align-items: center;
         box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
         border-radius: 10px;
+        @media screen and (max-width: 600px) {
+            width: 90%;
+            flex-direction: column;
+        }
         &__left {
             width: 50%;
             height: 100%;
@@ -494,6 +663,10 @@ h1 {
             background-color: #EEE9E1;
             color: $font-color;
             padding: 1.5rem;
+            @media screen and (max-width: 600px) {
+                width: 100%;
+                padding: 0;
+            }
             h1 {
                 line-height: 6rem;
                 color: $main-color;
@@ -508,6 +681,9 @@ h1 {
                 font-size: 1.8rem;
                 padding: 1rem;
                 position: relative;
+                @media screen and (max-width: 600px) {
+                    font-size: 3rem;
+                }
 
                 &:nth-child(odd):not(.card__item--title) {
                     grid-column-start: 1;
@@ -538,6 +714,10 @@ h1 {
                 font-size: 1rem;
                 color: $font-color;
                 line-height: .9rem;
+                @media screen and (max-width: 600px) {
+                    font-size: 1.8rem;
+                    line-height: 1.8rem;
+                }
                 img {
                     width: 1.5rem;
                     height: 1.5rem;
@@ -552,6 +732,10 @@ h1 {
             grid-template-columns: repeat(3, minmax(50px, 1fr));
             background-color: #0075AF;
             padding: 1.5rem;
+            @media screen and (max-width: 600px) {
+                width: 100%;
+                padding: 0;
+            }
             .card__item {
                 display: flex;
                 align-items: start;
@@ -561,6 +745,9 @@ h1 {
                 font-size: 2rem;
                 padding: 1rem;
                 position: relative;
+                @media screen and (max-width: 600px) {
+                    font-size: 3rem;
+                }
                 &:nth-child(even) {
                     grid-column-start: 1;
                     grid-column-end: 4;
@@ -581,6 +768,10 @@ h1 {
             font-size: 1rem;
             color: $background-color;
             line-height: .9rem;
+            @media screen and (max-width: 600px) {
+                font-size: 1.8rem;
+                line-height: 1.8rem;
+            }
             img {
                 width: 1.5rem;
                 height: 1.5rem;
@@ -626,6 +817,7 @@ h1 {
         background-color: $edit-color;
         color: $background-color;
         border: solid 1px darken($edit-color, 3)
+        
     }
     &__delete {
         background-color: $delete-color;
@@ -737,8 +929,10 @@ p {
             height: 40px;
             border-radius: 50%;
             position: fixed;
-            top: 10%;
-            left: 95%;
+            top: 5%;
+            left: 93%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
             // display: flex;
             // justify-content: center;
             // align-items: center;
@@ -759,6 +953,12 @@ p {
     justify-content: space-between;
     width: 100%;
     height: calc(100vh - 200px);
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+    }
     &--address {
         width: 100%;
         display: flex;
@@ -793,6 +993,13 @@ p {
     transform: translate(-50%, -50%);
     font-family: 'Tropika Island Int Interlock';
     color: $main-color;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: 600px) {
+        font-size: 2rem;
+    } 
 }
 
 .loader {
@@ -825,7 +1032,7 @@ p {
 
 .audio__container {
     position: absolute;
-    top: 90%;
+    top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
     &--player {
@@ -852,12 +1059,12 @@ p {
             transform: translate(-2px)
         }
         .l2 {
-            height: 40%;
+            height: 46%;
             left: 63%;
             transform: rotate(-55deg) translate(-1.5px, -8px);
         }
         .l3 {
-            height: 40%;
+            height: 46%;
             left: 63%;
             transform: rotate(55deg) translate(-1.5px, 8px);
         }

@@ -44,15 +44,15 @@
 						{{ article.createdAt|date("d/m/Y") }}</i>
 				</span>
 				{# {% if article.updatedAt is not empty %}
-								<span>&nbsp / &nbsp
-									<i>Modifié le
-				
-										{{ article.updatedAt|date('d/m/Y')}}
-									</span>																																								</i>
-							{% endif %} #}
+																																<span>&nbsp / &nbsp
+																																	<i>Modifié le
+																												
+																																		{{ article.updatedAt|date('d/m/Y')}}
+																																	</span>																																								</i>
+																															{% endif %} #}
 			</div>
 			{% if(app.user) %}
-				{% if(app.user.pseudo == article.author or app.user.firstName == article.author) %}
+				{% if(app.user.id == article.authorId ) %}
 					<div class="form__edit__delete">
 						<a class="form__btn form__btn--edit" href="{{ path('actualites.edit', { id: article.id }) }}">Modifier</a>
 						<a class="form__btn form__btn--delete" href="{{ path('actualites.delete', { id: article.id }) }}">Supprimer</a>

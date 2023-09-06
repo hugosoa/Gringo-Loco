@@ -46,6 +46,9 @@ class ActuNews
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $profilPicture = null;
 
+    #[ORM\Column]
+    private ?int $author_id = null;
+
     // #[ORM\Column(length: 255)]
     // private ?string $article_picture = null;
 
@@ -190,4 +193,16 @@ class ActuNews
 
     //     return $this;
     // }
+
+    public function getAuthorId(): ?int
+    {
+        return $this->author_id;
+    }
+
+    public function setAuthorId(int $author_id): static
+    {
+        $this->author_id = $author_id;
+
+        return $this;
+    }
 }

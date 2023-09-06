@@ -13,7 +13,12 @@
 			<a href="{{ path('app_find_us') }}">Nous&nbsptrouver</a>
 			<a href="#">Boutique</a>
 			<a href="{{ path('app_reservation') }}">Réserver</a>
-			<a href="{{ path('app_profil') }}" class="links__profil--button">{{ render(controller('App\\Controller\\ProfilController::infoHeader')) }}</a>
 		</div>
-
-	</nav>
+	</div>
+</nav>
+{# <a href="{{ path('app_profil') }}" class="links__profil--button">{{ render(controller('App\\Controller\\ProfilController::infoHeader')) }}</a> #}
+<div class="nav--open">
+	<span class="line l1"></span>
+	<span class="line l2"></span>
+	<span class="line l3"></span>
+</div>

@@ -17,6 +17,7 @@ class ProfilController extends AbstractController
     #[Route('/profil', 'app_profil')]
     public function profil()
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_register');
         }

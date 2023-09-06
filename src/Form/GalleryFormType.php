@@ -19,7 +19,7 @@ class GalleryFormType extends AbstractType
                 'attr' => [
                     'class' => 'form__img'
                 ],
-                'label' => "Image de l'article",
+                'label' => "Image",
                 'label_attr' => [
                     'class' => 'form__label'
                 ],

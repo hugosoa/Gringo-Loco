@@ -1,0 +1,1090 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap");
+@font-face {
+  font-family: "Tropika Island Int Interlock";
+  src: url("{{ asset('/fonts/TropikaIsland-Int.woff2') }}") format("woff2"), url("{{ asset('/fonts/TropikaIsland-Int.woff') }}") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+*, html {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  font-family: "Tropika Island Int Interlock";
+  justify-content: center;
+  flex-direction: column;
+  height: 200px;
+  position: fixed;
+  top: 0%;
+  background: rgba(238, 233, 225, 0.0392156863);
+  backdrop-filter: blur(8.2px);
+  -webkit-backdrop-filter: blur(8.2px);
+  transform: translateX(0%);
+}
+@media screen and (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    display: block;
+    left: 0%;
+    transform: translateX(-100%);
+  }
+}
+
+.nav--open {
+  height: 5rem;
+  width: 5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  position: fixed;
+  top: 2.5%;
+  left: 5%;
+}
+.nav--open .line {
+  position: absolute;
+  display: block;
+  width: 80%;
+  height: 0.5rem;
+  background-color: #6DAFE1;
+  border-radius: 10px;
+}
+.nav--open .l1 {
+  top: 0%;
+}
+.nav--open .l2 {
+  top: 25%;
+}
+.nav--open .l3 {
+  top: 50%;
+}
+
+nav.fade--in {
+  animation: fade-in 0.5s cubic-bezier(0.26, 0.66, 0.37, 0.96) forwards;
+}
+
+nav.fade--out {
+  animation: fade-out 0.5s cubic-bezier(0.26, 0.66, 0.37, 0.96) forwards;
+}
+
+@keyframes fade-out {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  100% {
+    transform: translate(0px, -300px);
+  }
+}
+@keyframes fade-in {
+  0% {
+    transform: translate(0px, -300px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+button {
+  cursor: pointer;
+}
+
+input {
+  color: #005B89;
+  font-size: 1.3rem;
+}
+@media screen and (max-width: 600px) {
+  input {
+    font-size: 2.3rem;
+    height: 4rem;
+  }
+}
+
+input::placeholder {
+  font-style: italic;
+}
+
+input[type=password] {
+  color: #3E667D;
+  font-size: 2rem;
+}
+@media screen and (max-width: 600px) {
+  input[type=password] {
+    font-size: 3rem;
+  }
+}
+
+textarea {
+  color: #005B89;
+  font-size: 1.3rem;
+  height: 10rem;
+}
+@media screen and (max-width: 600px) {
+  textarea {
+    font-size: 2.3rem;
+    height: 15rem;
+  }
+}
+
+.logo {
+  /* width: 100%; */
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+.logo img {
+  width: 10rem;
+}
+@media screen and (max-width: 600px) {
+  .logo img {
+    display: none;
+  }
+}
+
+.links {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+}
+@media screen and (max-width: 600px) {
+  .links {
+    flex-direction: column;
+  }
+}
+.links .left, .links .right {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+}
+@media screen and (max-width: 600px) {
+  .links .left, .links .right {
+    flex-direction: column;
+  }
+}
+.links .right a:nth-child(2) {
+  pointer-events: none;
+  cursor: default;
+  padding: 0.3rem 1rem;
+  color: #97c6ea;
+}
+
+nav a {
+  color: #6DAFE1;
+  text-decoration: none;
+  font-size: 2rem;
+}
+nav a:hover {
+  text-decoration: underline dashed #3E667D;
+  animation: underline 1000ms;
+}
+
+@keyframes underline {
+  0% {
+    transform: width(0%);
+  }
+  100% {
+    transform: width(100%);
+  }
+}
+.background__img__home {
+  position: relative;
+  top: 0%;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+.background__img__home .vignette {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.9));
+}
+.background__img__home .bg-img {
+  position: absolute;
+  object-fit: cover;
+  width: 150%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media screen and (max-width: 600px) {
+  .background__img__home .bg-img {
+    height: 150%;
+  }
+}
+.background__img__home .branchegauche {
+  position: absolute;
+  width: 100px;
+  top: 22%;
+  left: 2%;
+  z-index: 2;
+}
+.background__img__home .hautgauche {
+  position: absolute;
+  width: 870px;
+  top: 28%;
+  left: 15%;
+}
+.background__img__home .branchemilieu {
+  position: absolute;
+  width: 870px;
+  top: 39%;
+  left: 35%;
+}
+.background__img__home .basgauche {
+  position: absolute;
+  width: 250px;
+  top: 83%;
+  left: 7%;
+}
+.background__img__home .basmilieu {
+  position: absolute;
+  width: 971px;
+  top: 83%;
+  left: 80%;
+}
+.background__img__home .parallax {
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: 0.45s cubic-bezier(0.26, 0.66, 0.37, 0.96);
+}
+
+body {
+  background-color: #EEE9E1;
+}
+
+h1 {
+  font-family: "Tropika Island Int Interlock";
+  color: #3E667D;
+}
+
+.articles__container {
+  margin-top: 200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.articles__container .date {
+  display: flex;
+  align-items: end;
+}
+.articles__container img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.article {
+  margin-bottom: 5rem;
+  width: 50rem;
+  font-family: "Baloo 2";
+  color: #005B89;
+  position: relative;
+}
+@media screen and (max-width: 600px) {
+  .article {
+    font-size: 1rem;
+  }
+}
+.article p a:nth-child(1) {
+  font-family: "Tropika Island Int Interlock";
+  text-decoration: none;
+  color: #6DAFE1;
+  border-bottom: solid 1px #3E667D;
+}
+.article--more {
+  font-family: "Tropika Island Int Interlock";
+  border-bottom: #3E667D;
+  color: #6DAFE1;
+}
+.article .arrow--back {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  position: absolute;
+  top: 1%;
+  left: -7%;
+  animation: backArrow 1s linear infinite;
+}
+
+@keyframes backArrow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-0.1rem); /* Vous pouvez ajuster la valeur en fonction de vos besoins */
+  }
+}
+.single__article {
+  margin-top: 200px;
+  min-height: calc(100vh - 200px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.single__article img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+.single__article a {
+  color: #6DAFE1;
+  border-bottom: #3E667D;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.vich-image img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+}
+
+.navigation {
+  font-family: "Tropika Island Int Interlock";
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  background-color: #eae4da;
+}
+.navigation a {
+  color: #6DAFE1;
+  text-decoration: none;
+}
+.navigation .current {
+  color: #005B89;
+  padding: 0.3rem 0.5rem;
+}
+.navigation span {
+  padding: 0.3rem 0.5rem;
+  margin: 0rem;
+  text-align: center;
+}
+
+.form {
+  margin-top: 200px;
+  min-height: calc(100vh - 200px);
+  color: #6DAFE1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (max-width: 600px) {
+  .form {
+    font-size: 2rem;
+  }
+}
+.form--logout {
+  text-decoration: none;
+  border-bottom: solid 1px #ff6161;
+  color: #ff6161;
+  font-family: "Baloo 2";
+}
+.form__edit__delete {
+  display: flex;
+  justify-content: end;
+}
+.form__btn {
+  color: #EEE9E1;
+  text-decoration: none;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  border-radius: 10px;
+}
+.form__btn--edit {
+  background-color: #729cf7;
+}
+@media screen and (max-width: 600px) {
+  .form__btn--edit {
+    font-size: 2rem;
+  }
+}
+.form__btn--delete {
+  background-color: #ff6161;
+  margin-left: 0.5rem;
+}
+@media screen and (max-width: 600px) {
+  .form__btn--delete {
+    font-size: 2rem;
+  }
+}
+.form__add {
+  text-decoration: none;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  font-size: 5rem;
+  color: #6DAFE1;
+  font-family: "Tropika Island Int Interlock";
+}
+@media screen and (max-width: 600px) {
+  .form__add {
+    font-size: 7rem;
+  }
+}
+.form__groups {
+  width: 40rem;
+  font-family: "Baloo 2";
+}
+@media screen and (max-width: 600px) {
+  .form__groups {
+    width: 80%;
+  }
+}
+.form__group {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+.form__group--btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.form__group--btn :hover {
+  pointer-events: cursor;
+}
+.form__group--btn a {
+  border-bottom: #3E667D;
+  color: #6DAFE1;
+  font-family: "Baloo 2";
+  font-size: 1rem;
+}
+@media screen and (max-width: 600px) {
+  .form__group--btn a {
+    font-size: 2rem;
+  }
+}
+.form__label {
+  font-size: 1.5rem;
+}
+@media screen and (max-width: 600px) {
+  .form__label {
+    font-size: 3rem;
+  }
+}
+.form__control {
+  background-color: #f5f3ee;
+  border-radius: 10px;
+  padding: 0.2rem 0.5rem;
+  border: solid 1px #eae4da;
+}
+.form__textarea {
+  background-color: #f5f3ee;
+  border-radius: 10px;
+  padding: 0.5rem;
+  border: solid 1px #eae4da;
+  overflow: visible;
+  resize: none;
+}
+.form__img {
+  background-color: #f5f3ee;
+  border-radius: 10px;
+  padding: 0.5rem;
+  border: solid 1px #eae4da;
+  font-size: 1rem;
+}
+@media screen and (max-width: 600px) {
+  .form__img {
+    font-size: 2rem;
+  }
+}
+.form__submit {
+  font-family: "Tropika Island Int Interlock";
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: solid 2px #3E667D;
+  box-shadow: none;
+  color: #3E667D;
+  background-color: #EEE9E1;
+  font-size: 1.1rem;
+  color: #3E667D;
+}
+@media screen and (max-width: 600px) {
+  .form__submit {
+    font-size: 2.5rem;
+  }
+}
+.form__submit:hover {
+  color: #6DAFE1;
+  border: solid 2.1px #6DAFE1;
+}
+
+.gallery {
+  margin: 200px 15% 0 15%;
+}
+@media screen and (max-width: 600px) {
+  .gallery {
+    margin: 200px 5% 0 5%;
+  }
+}
+.gallery__container {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+}
+@media screen and (max-width: 600px) {
+  .gallery__container {
+    grid-template-columns: repeat(3, minmax(120px, 1fr));
+    grid-gap: 15px;
+  }
+}
+.gallery__container--delete {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  background-color: #ff6161;
+  border-radius: 0.2rem;
+  width: 1.5rem;
+  opacity: 0;
+}
+.gallery__container--images {
+  position: relative;
+  aspect-ratio: 1;
+}
+.gallery__container--images:hover .gallery__container--delete {
+  opacity: 1;
+  transition: 0.4s;
+}
+.gallery__container--images:nth-child(5) {
+  grid-column: 1/3;
+  grid-row: 2/4;
+}
+.gallery__container--images:nth-child(15) {
+  grid-column: 3/5;
+  grid-row: 5/7;
+}
+.gallery__container img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.gallery__container .gallery__btn--delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gallery__container .gallery__btn--delete img {
+  width: 100%;
+}
+
+.card__container {
+  width: 100%;
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+.card__container .card {
+  padding: 1rem;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+@media screen and (max-width: 600px) {
+  .card__container .card {
+    width: 90%;
+    flex-direction: column;
+  }
+}
+.card__container .card__left {
+  width: 50%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(50px, 1fr));
+  background-color: #EEE9E1;
+  color: #005B89;
+  padding: 1.5rem;
+}
+@media screen and (max-width: 600px) {
+  .card__container .card__left {
+    width: 100%;
+    padding: 0;
+  }
+}
+.card__container .card__left h1 {
+  line-height: 6rem;
+  color: #6DAFE1;
+  font-size: 6rem;
+}
+.card__container .card__left .card__item {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  font-family: "Tropika Island Int Interlock";
+  font-size: 1.8rem;
+  padding: 1rem;
+  position: relative;
+}
+@media screen and (max-width: 600px) {
+  .card__container .card__left .card__item {
+    font-size: 3rem;
+  }
+}
+.card__container .card__left .card__item:nth-child(odd):not(.card__item--title) {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  text-align: left;
+  color: #6DAFE1;
+}
+.card__container .card__left .card__item:nth-child(even):not(.card__item--title) {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  text-align: right;
+}
+.card__container .card__left .card__item--title {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  font-size: 2rem;
+  color: #3E667D;
+  line-height: 3.1rem;
+}
+.card__container .card__left .card__item--title:nth-child(1) {
+  border-bottom: 3px solid #3E667D;
+}
+.card__container .card__left p {
+  font-family: "Baloo 2";
+  font-size: 1rem;
+  color: #005B89;
+  line-height: 0.9rem;
+}
+@media screen and (max-width: 600px) {
+  .card__container .card__left p {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+  }
+}
+.card__container .card__left p img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 2px;
+}
+.card__container .card__right {
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(50px, 1fr));
+  background-color: #0075AF;
+  padding: 1.5rem;
+}
+@media screen and (max-width: 600px) {
+  .card__container .card__right {
+    width: 100%;
+    padding: 0;
+  }
+}
+.card__container .card__right .card__item {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  font-family: "Tropika Island Int Interlock";
+  color: #EEE9E1;
+  font-size: 2rem;
+  padding: 1rem;
+  position: relative;
+}
+@media screen and (max-width: 600px) {
+  .card__container .card__right .card__item {
+    font-size: 3rem;
+  }
+}
+.card__container .card__right .card__item:nth-child(even) {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  text-align: left;
+}
+.card__container .card__right .card__item:nth-child(odd):not(.card__item--title) {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  text-align: right;
+}
+.card__container .card__right .card__item--title {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.card__container .card__right p {
+  font-family: "Baloo 2";
+  font-size: 1rem;
+  color: #EEE9E1;
+  line-height: 0.9rem;
+}
+@media screen and (max-width: 600px) {
+  .card__container .card__right p {
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+  }
+}
+.card__container .card__right p img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 2px;
+}
+
+.hover--reveal {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  pointer-events: none;
+  transform: translate(0px, 0px);
+  overflow: hidden;
+  transform: scale(0.8);
+  transition: all 0.5s ease-out;
+  opacity: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+.hover--reveal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: text-transform 0.5s ease-out;
+}
+
+.alert {
+  z-index: 15;
+  font-size: 1.2rem;
+  font-family: "Baloo 2";
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  border-radius: 10px;
+}
+.alert__success {
+  background-color: #bdfdd5;
+  color: #005B89;
+}
+.alert__edit {
+  background-color: #729cf7;
+  color: #EEE9E1;
+  border: solid 1px #6492f6;
+}
+.alert__delete {
+  background-color: #ff6161;
+  color: #EEE9E1;
+}
+
+p {
+  width: 100%;
+}
+
+.profil__submit {
+  font-family: "Tropika Island Int Interlock";
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: solid 2px #3E667D;
+  box-shadow: none;
+  color: #3E667D;
+  background-color: #EEE9E1;
+  font-size: 1.1rem;
+  color: #3E667D;
+}
+.profil__submit:hover {
+  color: #6DAFE1;
+  border: solid 2.1px #6DAFE1;
+}
+.profil__container {
+  margin-top: 200px;
+  width: 100%;
+  height: calc(100vh - 200px);
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.profil__container--button {
+  margin: 1rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.profil__container--infos {
+  position: relative;
+  width: 40rem;
+  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 1rem;
+}
+.profil__container--logout {
+  position: absolute;
+  top: 5%;
+  left: 80%;
+}
+.profil__container--logout a {
+  text-decoration: none;
+  border-bottom: solid 1px #ff6161;
+  color: #ff6161;
+  font-family: "Baloo 2";
+}
+.profil__container td {
+  padding: 0.5rem 1rem;
+  color: #005B89;
+  font-family: "Baloo 2";
+  font-size: 1.5rem;
+  background-color: #f2eee8;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+.profil__container th {
+  padding: 1rem;
+  text-align: left;
+  width: 30%;
+  font-family: "Tropika Island Int Interlock";
+  color: #6DAFE1;
+  font-size: 2rem;
+}
+.profil__container tr {
+  line-height: 2rem;
+  border: solid 1px #3E667D;
+  margin: 1rem;
+}
+.profil__container tbody {
+  border: solid 1px #6DAFE1;
+}
+.profil__container caption {
+  color: #005B89;
+  font-family: "Baloo 2";
+  font-size: 1.5rem;
+}
+.profil__container a {
+  text-decoration: none;
+}
+.profil__picture {
+  width: 100px;
+  height: 100px;
+}
+.profil__picture img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profil__picture--header {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: fixed;
+  top: 10%;
+  left: 95%;
+}
+.profil__picture--header img {
+  border: solid 2px #6DAFE1;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.find_us {
+  margin-top: 200px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: calc(100vh - 200px);
+}
+@media screen and (max-width: 600px) {
+  .find_us {
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.find_us--address {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.find_us--address p {
+  font-family: "Baloo 2";
+  color: #005B89;
+  font-size: 2rem;
+}
+.find_us--address h2 {
+  font-family: "Tropika Island Int Interlock";
+  color: #6DAFE1;
+  font-size: 3rem;
+}
+.find_us--address p, .find_us--address h2 {
+  text-align: center;
+}
+.find_us .map {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Tropika Island Int Interlock";
+  color: #6DAFE1;
+}
+@media screen and (max-width: 600px) {
+  .footer {
+    font-size: 2rem;
+  }
+}
+
+.loader {
+  width: 100%;
+  height: 100vh;
+  background-color: #131313;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader img {
+  animation: shake 0.5s ease-in-out infinite;
+  width: 5%;
+}
+.loader .progress-container {
+  width: 100%;
+  background-color: #f1f1f1;
+}
+.loader .progress-bar {
+  width: 0;
+  height: 30px;
+  background-color: #4caf50;
+}
+
+.display--none {
+  display: none;
+}
+
+.audio__container {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.audio__container--player {
+  height: 30px;
+  width: 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+.audio__container--player .line {
+  position: absolute;
+  display: block;
+  height: 50%;
+  width: 2px;
+  border-radius: 5px;
+  background-color: #eff1e6;
+  transition: transform 0.3s ease-out, opacity 0.1s ease-out;
+}
+.audio__container--player .l1 {
+  left: 27%;
+  transform: translate(-2px);
+}
+.audio__container--player .l2 {
+  height: 40%;
+  left: 63%;
+  transform: rotate(-55deg) translate(-1.5px, -8px);
+}
+.audio__container--player .l3 {
+  height: 40%;
+  left: 63%;
+  transform: rotate(55deg) translate(-1.5px, 8px);
+}
+.audio__container--player .l4 {
+  left: 28%;
+  transform: translate(-2px);
+}
+.audio__container--player.active .l1 {
+  transform: translate(-2px);
+  animation: player 0.5s cubic-bezier(0.26, 0.66, 0.37, 0.96) forwards;
+}
+.audio__container--player.active .l2 {
+  transform: rotate(-55deg) translate(-1.5px, 15px);
+  opacity: 0;
+}
+.audio__container--player.active .l3 {
+  transform: rotate(55deg) translate(-1.5px, -15px);
+  opacity: 0;
+}
+.audio__container--player.active .l4 {
+  transform: translate(7px);
+}
+
+.circle {
+  height: 24px;
+  width: 24px;
+  border-radius: 24px;
+  background-color: #6DAFE1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: auto;
+  z-index: -10;
+}
+
+@keyframes player {
+  0% {
+    transform: translateX(-2px);
+  }
+  30% {
+    transform: translateX(2px);
+  }
+  80% {
+    transform: translateX(-3px);
+  }
+  100% {
+    transform: translateX(-2px);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translateY(-2rem) rotate(5deg);
+  }
+  5% {
+    transform: translateY(-1.8rem) rotate(5deg);
+  }
+  50% {
+    transform: translateY(2rem) rotate(0deg);
+  }
+  95% {
+    transform: translateY(-1.8rem) rotate(5deg);
+  }
+  100% {
+    transform: translateY(-2rem) rotate(5deg);
+  }
+}
+
+/*# sourceMappingURL=mystyle34.css.map */

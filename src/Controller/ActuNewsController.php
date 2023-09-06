@@ -44,7 +44,7 @@ class ActuNewsController extends AbstractController
     #[Route('/actualites/nouveau', name: 'actualites.new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $manager): Response
     {
-
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $article = new ActuNews();
         $form = $this->createForm(ArticlesType::class, $article);
 
@@ -55,6 +55,7 @@ class ActuNewsController extends AbstractController
             } else {
                 $article->setAuthor($this->getUser()->getFirstName());
             }
+            $article->setAuthorId($this->getUser()->getId());
             $manager->persist($article);
             $manager->flush();
 
@@ -75,9 +76,13 @@ class ActuNewsController extends AbstractController
     #[Route('/actualites/edition/{id}', name: 'actualites.edit', methods: ['GET', 'POST'])]
     public function edit(ActuNewsRepository $repository, int $id, Request $request, EntityManagerInterface $manager): Response
     {
-
-
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $article = $repository->findOneBy(["id" => $id]);
+        if ($this->getUser()->getId() != $article->getAuthorId()) {
+            return $this->redirectToRoute("app_login");
+        }
+
+
         $form = $this->createForm(ArticlesType::class, $article);
 
         $form->handleRequest($request);
@@ -103,7 +108,10 @@ class ActuNewsController extends AbstractController
     #[Route('/actualites/suppression/{id}', name: 'actualites.delete', methods: ['GET'])]
     public function delete(EntityManagerInterface $manager, ActuNews $article): Response
     {
-
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        if ($this->getUser()->getId() != $article->getAuthorId()) {
+            return $this->redirectToRoute("app_login");
+        }
         $manager->remove($article);
         $manager->flush();
 

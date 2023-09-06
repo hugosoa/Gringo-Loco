@@ -51,7 +51,7 @@ class ReservationType extends AbstractType
                 'attr' => [
                     'class' => 'form__textarea',
                 ],
-                'label' => 'Combien de personne et demande particulière',
+                'label' => 'Nombre de personne et demande particulière',
                 'label_attr' => [
                     'class' => 'form__label'
                 ],
